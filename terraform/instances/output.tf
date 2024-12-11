@@ -6,10 +6,10 @@ output "private_VM_ids" {
     value = aws_instance.private_VM[*].id
 }
 
-output "public_sg" {
+output "public_sg_id" {
     value = aws_security_group.public_sg.id
 }
 
 output "key_name" {
-    value = aws_key_pair.project.id
+  value = aws_key_pair.project.key_name
 }
