@@ -69,8 +69,12 @@ resource "aws_launch_template" "proj_lt" {
     
     name = "Webserver Image LT"
     instance_type = "t2.micro"
+    key_name = data.terraform_remote_state.rs_instance.outputs.key_name
     image_id = aws_ami_from_instance.lt_ami.id
     vpc_security_group_ids = [data.terraform_remote_state.rs_instance.outputs.public_sg_id] //Check
+    monitoring {
+        enabled = true
+    }
 }
 
 # resource "aws_placement_group" "proj_pg" {
