@@ -6,6 +6,6 @@ output "private_VM_ids" {
     value = aws_instance.private_VM[*].id
 }
 
-output "public_sg {
+output "public_sg" {
     value = aws_security_group.public_sg.id
 }
