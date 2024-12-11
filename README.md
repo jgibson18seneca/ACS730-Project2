@@ -20,5 +20,7 @@ Thye must also be destroyed in the following order:
 2. "instances"
 3. "vpc"
 
-Terraform State files stored to S3 bucket - "acs730-project-bucket" 
+******* OTHER NOTES
+Terraform State files stored to S3 bucket - "acs730-project-bucket"
+SSH Key Pair needs to be created before provisioning "instances" folder - Key Pair should be named 'project'
 
