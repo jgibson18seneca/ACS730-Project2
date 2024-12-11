@@ -73,27 +73,27 @@ resource "aws_launch_template" "proj_lt" {
     vpc_security_group_ids = [data.terraform_remote_state.rs_instance.outputs.public_sg_id] //Check
 }
 
-resource "aws_placement_group" "proj_pg" {
-    name     = "test"
-    strategy = "cluster"
-}
+# resource "aws_placement_group" "proj_pg" {
+#     name     = "test"
+#     strategy = "cluster"
+# }
 
-resource "aws_autoscaling_group" "proj_asg" {
-    name                      = "Project ASG"
-    max_size                  = 6
-    min_size                  = 3
-    health_check_grace_period = 300
-    health_check_type         = "ELB"
-    desired_capacity          = 3
-    force_delete              = true
-    placement_group           = aws_placement_group.proj_pg.id
-    vpc_zone_identifier       = [data.terraform_remote_state.rs_vpc.outputs.public_subnet_id[*]]
+# resource "aws_autoscaling_group" "proj_asg" {
+#     name                      = "Project ASG"
+#     max_size                  = 6
+#     min_size                  = 3
+#     health_check_grace_period = 300
+#     health_check_type         = "ELB"
+#     desired_capacity          = 3
+#     force_delete              = true
+#     placement_group           = aws_placement_group.proj_pg.id
+#     vpc_zone_identifier       = [data.terraform_remote_state.rs_vpc.outputs.public_subnet_id[*]]
     
-    instance_maintenance_policy {
-        min_healthy_percentage = 90
-        max_healthy_percentage = 120
-  }
-}
+#     instance_maintenance_policy {
+#         min_healthy_percentage = 90
+#         max_healthy_percentage = 120
+#   }
+# }
 
 resource "aws_autoscaling_group" "proj_asg" {
   availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
