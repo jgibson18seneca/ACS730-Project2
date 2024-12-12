@@ -9,8 +9,9 @@ Terraform component consists of three(3) sub-folders, each have a "main.tf" file
 2. "instances" - All Virtual Machines, Security Groups and SSH key pair
 3. "adds" - ALB, Target Group, Launch Template, Auto-Scaling Group
 Any other order will lead to errors
+After the creation of the items in part three, the instances would need to be added to the target group due to the coding used.
 
-Thye must also be destroyed in the following order:
+They must also be destroyed in the following order:
 1. "adds"
 2. "instances"
 3. "vpc"
